@@ -9,6 +9,7 @@ let pop = []
 //para referenciar svg con id = canvas
 const canvas = d3.select("#canvas")
 const estadoSeleccionado = d3.select("#estado-seleccionado")
+const habitantesSeleccionado = d3.select("#habitantes-seleccionado")
 const color = d3.scaleLog().range(['#f0edf5', '#045a8d'])
 
 // Range steps
@@ -68,10 +69,13 @@ function dibujaMapa () {
 
   // interactividad con el mouse
     .on('mouseover', function (d, i) {
-      estadoSeleccionado.text(d3.select(this).text())
+      const estadoHabitantes = d3.select(this).text().split('\n')
+      estadoSeleccionado.text(estadoHabitantes[0])
+      habitantesSeleccionado.text(estadoHabitantes[1])
     })
     .on('mouseout', function (d, i) {
       estadoSeleccionado.text('')
+      habitantesSeleccionado.text('')
     })
 
   // generando el tooltip
