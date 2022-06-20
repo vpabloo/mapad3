@@ -13,20 +13,11 @@ const habitantesSeleccionado = d3.select("#habitantes-seleccionado")
 const color = d3.scaleLog().range(['#f0edf5', '#045a8d'])
 
 // Range steps
-const años = [
-  "1910",
-  "1920",
-  "1930",
-  "1940",
-  "1950",
-  "1960",
-  "1970",
-  "1980",
-  "1990",
-  "2000",
-  "2010",
-  "2020",
-]
+const años = []
+d3.csv('apportionment.csv', function(ranges) {
+  años.push(ranges['Year']);
+});
+console.log(años);
 
 // Select
 const etiquetaAño = document.getElementById('año-seleccionado')
